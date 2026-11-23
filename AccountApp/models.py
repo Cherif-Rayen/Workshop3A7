@@ -7,6 +7,9 @@ class Speciality(models.Model):
     name=models.CharField(max_length=255)
     created_at=models.DateTimeField(auto_now_add=True)
     update_at=models.DateTimeField(auto_now=True)
+    class Meta:
+        verbose_name="Speciality"
+        verbose_name_plural="Specialities"
    
 # Create your models here.
 class User(AbstractUser):
@@ -21,6 +24,9 @@ class Doctor(User):
         Speciality,
         related_name="doctors"
     )
+    class Meta:
+            verbose_name="Doctor"
+            verbose_name_plural="Doctors"
 number_Validator=RegexValidator(
         regex= r'^\d{8}$',
         message="le numero incorrect, ne respecte pas le pattern 8 chiffres exacte"
@@ -34,3 +40,6 @@ class Patient(User):
     birth_date=models.DateField(validators=[validate_birth_date])
     created_at=models.DateTimeField(auto_now_add=True)
     update_at=models.DateTimeField(auto_now=True)
+    class Meta:
+            verbose_name="Patient"
+            verbose_name_plural="Patients"
